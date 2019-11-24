@@ -7,7 +7,7 @@ spec:
     matchLabels:
       app: brownbagnx
       tier: brownbagnx-frontend
-  replicas: 2
+  replicas: 1
   template:
     metadata:
       labels:
