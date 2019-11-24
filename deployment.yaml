@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: brownbagnx-frontend-deployment
+spec:
+  selector:
+    matchLabels:
+      app: brownbagnx-frontend
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: brownbagnx
+        tier: brownbagnx-frontend
+    spec:
+      containers:
+      - name: brownbagnx
+        image: mateuszbrycki/brownbagnx-react-client:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
+          name: http
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: brownbagnx-service
+  labels:
+    app: brownbagnx
+spec:
+  ports:
+    - port: 80
+      targetPort: 80
+  selector:
+    app: brownbagnx
+    tier: brownbagnx-frontend
+  type: LoadBalancer
