@@ -5,7 +5,8 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app: brownbagnx-frontend
+      app: brownbagnx
+      tier: brownbagnx-frontend
   replicas: 2
   template:
     metadata:
